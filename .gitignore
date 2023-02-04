@@ -26,5 +26,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Test data
+test_data/
+
 # Other files
 *.pdf
