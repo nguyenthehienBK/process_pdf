@@ -9,11 +9,13 @@ import argparse
 parser = argparse.ArgumentParser(description='Process PDF file!')
 parser.add_argument('--path', type=str, required=True)
 parser.add_argument('--split_end_page', type=int, default=2)
+parser.add_argument('--name', type=str, default="GCN")
 parser.add_argument('--delete_org', type=str, default="0")
 args = parser.parse_args()
 
 path_to_root = args.path
 split_end_page = args.split_end_page
+name = args.name
 delete_org = args.delete_org
 
 print("\n##################################")
@@ -37,7 +39,7 @@ for directory in tqdm(ls_dir):
                     writer_1 = PdfWriter()
                     for page in pdfObj[:split_end_page]:
                         writer_1.add_page(page)
-                    path_pdf_1 = join(path_to_dir, "GCN.pdf")
+                    path_pdf_1 = join(path_to_dir, f"{name}.pdf")
                     with open(path_pdf_1, "wb") as GCN:
                         writer_1.write(GCN)
 
