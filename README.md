@@ -11,13 +11,15 @@ cac_folder_scan
 ## Thực hiện tách file PDF
 Sao chép lệnh bên dưới vào `cmd` để chạy:
 ```sh
-python .\main.py --path D:\Work_Hien\support_uncle_chien\process_pdf\test_data\cac_folder_scan `
+python .\main.py `
+--src D:\Work_Hien\support_uncle_chien\process_pdf\test_data\cac_folder_scan `
+--dest D:\Work_Hien\support_uncle_chien\process_pdf\test_data\results `
 --split_end_page 2 `
 --name GCN `
 --delete_org 0
 ```
 Ý nghĩa các thông số tùy chọn:
-- `--path D:\Work_Hien\support_uncle_chien\process_pdf\test_data\cac_folder_scan`: Chỉ định đường dẫn đến folder chứa
+- `--src D:\Work_Hien\support_uncle_chien\process_pdf\test_data\cac_folder_scan`: Chỉ định đường dẫn đến folder chứa
 các folder scan
 - `--split_end_page 2`: Thực hiện tách `2` trang đầu tiên khỏi phần còn lại
 - `--name GCN`: Tên của file PDF đầu tiên sẽ là `GCN.pdf`, lưu ý không chứa dầu cách hay khoảng trắng khác khi đặt tên

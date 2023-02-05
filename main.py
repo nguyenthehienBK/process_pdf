@@ -1,5 +1,5 @@
 import os
-
+import shutil
 from PyPDF2 import PdfWriter, PdfReader
 from tqdm import tqdm
 from os import listdir
@@ -7,13 +7,15 @@ from os.path import isdir, join
 import argparse
 
 parser = argparse.ArgumentParser(description='Process PDF file!')
-parser.add_argument('--path', type=str, required=True)
+parser.add_argument('--src', type=str, required=True)
+parser.add_argument('--dest', type=str, required=True)
 parser.add_argument('--split_end_page', type=int, default=2)
 parser.add_argument('--name', type=str, default="GCN")
 parser.add_argument('--delete_org', type=str, default="0")
 args = parser.parse_args()
 
-path_to_root = args.path
+path_to_root = args.src
+path_result = args.dest
 split_end_page = args.split_end_page
 name = args.name
 delete_org = args.delete_org
@@ -49,9 +51,13 @@ for directory in tqdm(ls_dir):
                     path_pdf_2 = join(path_to_dir, "other.pdf")
                     with open(path_pdf_2, "wb") as other:
                         writer_2.write(other)
-                    count += 1
             if delete_org == "1":
                 os.remove(path_pdf)
+
+            if not os.path.exists(path_result):
+                os.mkdir(path_result)
+            shutil.move(path_to_dir, path_result)
+            count += 1
 
 print(f"Hoan thanh xu ly tach file PDF thanh cong cho {count} thu muc!")
 print("##################################\n")
